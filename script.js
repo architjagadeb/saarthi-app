@@ -1,40 +1,45 @@
-document.getElementById("generate-voice-btn").addEventListener("click", async () => {
-  const script = document.getElementById("voice-script").value.trim();
-  const gender = document.getElementById("voice-gender").value;
-  const language = document.getElementById("voice-language").value;
-  const speed = document.getElementById("voice-speed").value;
+// Voice generation functionality (only for start-campaign page)
+const generateVoiceBtn = document.getElementById("generate-voice-btn");
+if (generateVoiceBtn) {
+  generateVoiceBtn.addEventListener("click", async () => {
+    const script = document.getElementById("voice-script").value.trim();
+    const gender = document.getElementById("voice-gender").value;
+    const language = document.getElementById("voice-language").value;
+    const speed = document.getElementById("voice-speed").value;
 
-  if (!script) return alert("Please enter a voice script.");
+    if (!script) return alert("Please enter a voice script.");
 
-  const btn = document.getElementById("generate-voice-btn");
-  btn.disabled = true;
-  btn.textContent = "Generating...";
+    const btn = document.getElementById("generate-voice-btn");
+    btn.disabled = true;
+    btn.textContent = "Generating...";
 
-  try {
-    const res = await fetch("/api/murf-generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ script, gender, language, speed })
-    });
+    try {
+      const res = await fetch("/api/murf-generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ script, gender, language, speed })
+      });
 
-    const data = await res.json();
-    if (data.audioUrl) {
-      document.getElementById("audio-source").src = data.audioUrl;
-      document.querySelector(".audio-player").load();
-      document.getElementById("audio-preview").style.display = "block";
-    } else {
-      alert("No audio returned from server.");
+      const data = await res.json();
+      if (data.audioUrl) {
+        document.getElementById("audio-source").src = data.audioUrl;
+        document.querySelector(".audio-player").load();
+        document.getElementById("audio-preview").style.display = "block";
+      } else {
+        alert("No audio returned from server.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to generate voice.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Generate Voice with Murf AI";
     }
-  } catch (err) {
-    console.error(err);
-    alert("Failed to generate voice.");
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "Generate Voice with Murf AI";
-  }
-});
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Slider
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
@@ -68,68 +73,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     setInterval(nextSlide, slideInterval);
-}); 
 
-// Tooltip element
-const tooltip = document.getElementById('tooltip');
+  // Tooltip
+  const tooltip = document.getElementById('tooltip');
+  const paths = document.querySelectorAll("svg path");
 
-// Campaign data per state (update this as needed)
-const stateData = {
-  "Andhra Pradesh": "Andhra Pradesh – 8 campaigns",
-  "Arunachal Pradesh": "Arunachal Pradesh – 2 campaigns",
-  "Assam": "Assam – 6 campaigns",
-  "Bihar": "Bihar – 12 campaigns",
-  "Chhattisgarh": "Chhattisgarh – 4 campaigns",
-  "Goa": "Goa – 1 campaign",
-  "Gujarat": "Gujarat – 9 campaigns",
-  "Haryana": "Haryana – 5 campaigns",
-  "Himachal Pradesh": "Himachal Pradesh – 3 campaigns",
-  "Jharkhand": "Jharkhand – 7 campaigns",
-  "Karnataka": "Karnataka – 10 campaigns",
-  "Kerala": "Kerala – 6 campaigns",
-  "Madhya Pradesh": "Madhya Pradesh – 11 campaigns",
-  "Maharashtra": "Maharashtra – 24 campaigns",
-  "Manipur": "Manipur – 2 campaigns",
-  "Meghalaya": "Meghalaya – 1 campaign",
-  "Mizoram": "Mizoram – 1 campaign",
-  "Nagaland": "Nagaland – 1 campaign",
-  "Odisha": "Odisha – 8 campaigns",
-  "Punjab": "Punjab – 5 campaigns",
-  "Rajasthan": "Rajasthan – 9 campaigns",
-  "Sikkim": "Sikkim – 1 campaign",
-  "Tamil Nadu": "Tamil Nadu – 14 campaigns",
-  "Telangana": "Telangana – 6 campaigns",
-  "Tripura": "Tripura – 2 campaigns",
-  "Uttar Pradesh": "Uttar Pradesh – 19 campaigns",
-  "Uttarakhand": "Uttarakhand – 5 campaigns",
-  "West Bengal": "West Bengal – 13 campaigns",
-  "Delhi": "Delhi – 7 campaigns",
-  "Jammu and Kashmir": "Jammu and Kashmir – 4 campaigns",
-  "Ladakh": "Ladakh – 1 campaign",
-  "Puducherry": "Puducherry – 1 campaign",
-};
+  const stateData = {
+    "Andhra Pradesh": "Andhra Pradesh – 8 campaigns",
+    "Arunachal Pradesh": "Arunachal Pradesh – 2 campaigns",
+    "Assam": "Assam – 6 campaigns",
+    "Bihar": "Bihar – 12 campaigns",
+    "Chhattisgarh": "Chhattisgarh – 4 campaigns",
+    "Goa": "Goa – 1 campaign",
+    "Gujarat": "Gujarat – 9 campaigns",
+    "Haryana": "Haryana – 5 campaigns",
+    "Himachal Pradesh": "Himachal Pradesh – 3 campaigns",
+    "Jharkhand": "Jharkhand – 7 campaigns",
+    "Karnataka": "Karnataka – 10 campaigns",
+    "Kerala": "Kerala – 6 campaigns",
+    "Madhya Pradesh": "Madhya Pradesh – 11 campaigns",
+    "Maharashtra": "Maharashtra – 24 campaigns",
+    "Manipur": "Manipur – 2 campaigns",
+    "Meghalaya": "Meghalaya – 1 campaign",
+    "Mizoram": "Mizoram – 1 campaign",
+    "Nagaland": "Nagaland – 1 campaign",
+    "Odisha": "Odisha – 8 campaigns",
+    "Punjab": "Punjab – 5 campaigns",
+    "Rajasthan": "Rajasthan – 9 campaigns",
+    "Sikkim": "Sikkim – 1 campaign",
+    "Tamil Nadu": "Tamil Nadu – 14 campaigns",
+    "Telangana": "Telangana – 6 campaigns",
+    "Tripura": "Tripura – 2 campaigns",
+    "Uttar Pradesh": "Uttar Pradesh – 19 campaigns",
+    "Uttarakhand": "Uttarakhand – 5 campaigns",
+    "West Bengal": "West Bengal – 13 campaigns",
+    "Delhi": "Delhi – 7 campaigns",
+    "Jammu and Kashmir": "Jammu and Kashmir – 4 campaigns",
+    "Ladakh": "Ladakh – 1 campaign",
+    "Puducherry": "Puducherry – 1 campaign",
+  };
 
-// Attach listeners to all paths inside the SVG
-document.querySelectorAll('.map-container svg path').forEach((path) => {
-  const stateName = path.id;
+  paths.forEach((path) => {
+    const stateName = path.id;
 
-  // On hover
-  path.addEventListener('mouseover', () => {
-    const info = stateData[stateName] || `${stateName} – No campaigns yet`;
-    tooltip.innerText = info;
-    tooltip.style.display = 'block';
+    path.addEventListener('mouseover', (e) => {
+      if (!tooltip) return;
+      const info = stateData[stateName] || `${stateName} – No campaigns yet`;
+      tooltip.innerText = info;
+      tooltip.style.display = 'block';
+    });
+
+    path.addEventListener('mousemove', (e) => {
+      if (!tooltip) return;
+      tooltip.style.left = `${e.pageX + 15}px`;
+      tooltip.style.top = `${e.pageY + 15}px`;
+    });
+
+    path.addEventListener('mouseout', () => {
+      if (!tooltip) return;
+      tooltip.style.display = 'none';
+    });
   });
 
-  // On move
-  path.addEventListener('mousemove', (e) => {
-    tooltip.style.left = `${e.pageX + 15}px`;
-    tooltip.style.top = `${e.pageY + 15}px`;
-  });
-
-  // On leave
-  path.addEventListener('mouseout', () => {
-    tooltip.style.display = 'none';
-  });
+  // Other DOM-ready logic
+  animateStats();
+  initStatCardEffects();
 });
 
 // Stats Counter Animation
@@ -218,11 +226,5 @@ function initStatCardEffects() {
         });
     });
 }
-
-// Initialize all stat animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    animateStats();
-    initStatCardEffects();
-});
 
 

@@ -1,4 +1,4 @@
-C:\Users\Admin\OneDrive\Desktop\Projects\Saarthi> USE npx live-server [Basic]
+C:\Users\Admin\OneDrive\Desktop\Projects\Saarthi> USE npm start [Basic]
 
 C:\Users\Admin\OneDrive\Desktop\Projects\Saarthi\clerk-javascript> USE npm run dev [Clerk]
 
