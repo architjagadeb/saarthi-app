@@ -46,6 +46,11 @@
 .-translate-x-1\/2 { transform: translateX(-50%); }
 .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 
+/* Remove underlines from all links */
+a {
+    text-decoration: none;
+}
+
 /* Hover states */
 .hover\:bg-orange-700:hover { background-color: #c2410c; }
 .hover\:bg-white:hover { background-color: #ffffff; }
@@ -120,6 +125,7 @@ header .nav-link {
     cursor: pointer;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     transition: color 0.2s;
+    text-decoration: none;
 }
 
 header .nav-link:hover {
@@ -136,6 +142,7 @@ header .create-account-btn {
     border: none;
     cursor: pointer;
     transition: background-color 0.2s;
+    text-decoration: none;
 }
 
 header .create-account-btn:hover {
@@ -212,6 +219,7 @@ header .create-account-btn:hover {
     font-weight: 500;
     white-space: nowrap;
     transition: background-color 0.2s;
+    text-decoration: none;
 }
 
 .upload-btn:hover, .explore-btn:hover {
