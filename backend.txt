@@ -1,0 +1,11 @@
+C:\Users\Admin\OneDrive\Desktop\Projects\Saarthi> USE npx live-server [Basic]
+
+C:\Users\Admin\OneDrive\Desktop\Projects\Saarthi\clerk-javascript> USE npm run dev [Clerk]
+
+{"voice_id":"hi-IN-shweta","style":"Conversational"} [Sweta Voice ID]
+{"voice_id":"hi-IN-rahul","style":"General"} [Rahul Voice ID]
+
+{"voice_id":"en-US-natalie","style":"Promo"} [Natalie Voice ID]
+{"voice_id":"en-US-ken","style":"Conversational"} [Ken Voice ID]
+
+murf api key - ap2_397f1024-c966-4e6a-b8ed-ed607d8bc59d

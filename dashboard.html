@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Saarthi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">SAARTHI</div>
+        <div class="mobile-user">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-bullhorn"></i>
+                <span class="logo-text">SAARTHI</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link" data-page="my-campaigns">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="nav-text">My Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="start-campaign.html" class="nav-link" data-page="start-campaign">
+                        <i class="fas fa-plus-circle"></i>
+                        <span class="nav-text">Start a Campaign</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="campaigns.html" class="nav-link" data-page="explore-campaigns">
+                        <i class="fas fa-search"></i>
+                        <span class="nav-text">Explore Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="inbox">
+                        <i class="fas fa-inbox"></i>
+                        <span class="nav-text">Inbox / Feedback</span>
+                        <span class="notification-badge">3</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link sign-out" id="sign-out">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Welcome Banner -->
+        <section class="welcome-banner">
+            <div class="welcome-content">
+                <h1 class="welcome-title">Hello <span id="user-name">Priya</span>! 👋</h1>
+                <p class="welcome-subtitle">Here's how your voice is making an impact today.</p>
+            </div>
+            <div class="welcome-actions">
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Start New Campaign
+                </button>
+            </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="12">0</h3>
+                        <p class="stat-label">Campaigns Created</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="3">0</h3>
+                        <p class="stat-label">Under Review</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="847">0</h3>
+                        <p class="stat-label">Audio Messages Broadcasted</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="15420">0</h3>
+                        <p class="stat-label">Estimated Listeners</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Recent Campaigns -->
+            <section class="dashboard-section recent-campaigns">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Campaigns</h2>
+                    <a href="#" class="section-link">View All</a>
+                </div>
+                <div class="campaigns-list">
+                    <div class="campaign-item">
+                        <div class="campaign-info">
+                            <h4 class="campaign-title">Clean Water Initiative - Bihar</h4>
+                            <p class="campaign-meta">Created 2 days ago • Status: <span class="status active">Active</span></p>
+                        </div>
+                        <div class="campaign-stats">
+                            <span class="stat">1.2K listeners</span>
+                        </div>
+                    </div>
+                    <div class="campaign-item">
+                        <div class="campaign-info">
+                            <h4 class="campaign-title">Menstrual Health Awareness</h4>
+                            <p class="campaign-meta">Created 1 week ago • Status: <span class="status review">Under Review</span></p>
+                        </div>
+                        <div class="campaign-stats">
+                            <span class="stat">Pending</span>
+                        </div>
+                    </div>
+                    <div class="campaign-item">
+                        <div class="campaign-info">
+                            <h4 class="campaign-title">Education for All - Odisha</h4>
+                            <p class="campaign-meta">Created 2 weeks ago • Status: <span class="status completed">Completed</span></p>
+                        </div>
+                        <div class="campaign-stats">
+                            <span class="stat">3.5K listeners</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="dashboard-section quick-actions">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Actions</h2>
+                </div>
+                <div class="actions-grid">
+                    <button class="action-card">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Start New Campaign</span>
+                    </button>
+                    <button class="action-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Share via WhatsApp</span>
+                    </button>
+                    <button class="action-card">
+                        <i class="fas fa-chart-line"></i>
+                        <span>View Analytics</span>
+                    </button>
+                    <button class="action-card">
+                        <i class="fas fa-download"></i>
+                        <span>Download Report</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Profile Settings -->
+            <section class="dashboard-section profile-settings">
+                <div class="section-header">
+                    <h2 class="section-title">Profile Settings</h2>
+                    <button class="btn btn-secondary btn-sm" id="edit-profile">Edit</button>
+                </div>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="profile-name">Full Name</label>
+                        <input type="text" id="profile-name" value="Priya Sharma" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">Email</label>
+                        <input type="email" id="profile-email" value="priya.sharma@example.com" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-location">Location</label>
+                        <input type="text" id="profile-location" value="Bihar, India" readonly>
+                    </div>
+                    <div class="notification-preferences">
+                        <h4>Notification Preferences</h4>
+                        <div class="toggle-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                                Email notifications
+                            </label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                                Campaign updates
+                            </label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                                Weekly reports
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Help -->
+            <section class="dashboard-section community-help">
+                <div class="section-header">
+                    <h2 class="section-title">Community & Help</h2>
+                </div>
+                <div class="help-container">
+                    <div class="help-navigation">
+                        <button class="help-nav-btn" data-section="welcome" aria-selected="true">
+                            <i class="fas fa-home"></i>
+                            <span>Welcome</span>
+                        </button>
+                        <button class="help-nav-btn" data-section="faq" aria-selected="false">
+                            <i class="fas fa-question-circle"></i>
+                            <span>FAQ</span>
+                        </button>
+                        <button class="help-nav-btn" data-section="feedback" aria-selected="false">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>Submit Feedback</span>
+                        </button>
+                        <button class="help-nav-btn" data-section="contact" aria-selected="false">
+                            <i class="fas fa-headset"></i>
+                            <span>Contact Team</span>
+                        </button>
+                        <button class="help-nav-btn" data-section="guide" aria-selected="false">
+                            <i class="fas fa-book"></i>
+                            <span>User Guide</span>
+                        </button>
+                        <button class="help-nav-btn murf-ai-btn" data-section="murf" aria-selected="false" disabled>
+                            <i class="fas fa-robot"></i>
+                            <span>Ask with Murf AI</span>
+                            <small class="coming-soon">Coming Soon</small>
+                        </button>
+                    </div>
+                    <div class="help-content" id="help-content" role="tabpanel">
+                        <!-- Welcome Content (Default) -->
+                        <div class="help-section active" id="welcome-section">
+                            <div class="welcome-help">
+                                <i class="fas fa-hands-helping help-welcome-icon"></i>
+                                <h3>Welcome to Saarthi Help Center</h3>
+                                <p>Select an item from the menu to get help with your questions, submit feedback, or learn how to use Saarthi effectively.</p>
+                                <div class="quick-help-stats">
+                                    <div class="help-stat">
+                                        <strong>50+</strong>
+                                        <span>FAQ Articles</span>
+                                    </div>
+                                    <div class="help-stat">
+                                        <strong>24/7</strong>
+                                        <span>Support Available</span>
+                                    </div>
+                                    <div class="help-stat">
+                                        <strong>1000+</strong>
+                                        <span>Happy Users</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Content -->
+                        <div class="help-section" id="faq-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <button class="faq-question" aria-expanded="false">
+                                        <span>How do I create my first campaign?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>To create your first campaign, click on "Start a Campaign" in the sidebar, fill out the required information including title, description, location, and upload your voice message. Our team will review it within 24 hours.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" aria-expanded="false">
+                                        <span>What file formats are supported for voice messages?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>We support MP3 and WAV audio formats. Files should be under 10MB and have clear audio quality for the best reach and impact.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" aria-expanded="false">
+                                        <span>How long does campaign approval take?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Campaign approval typically takes 12-24 hours. Our team reviews content for appropriateness and ensures it aligns with our community guidelines.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" aria-expanded="false">
+                                        <span>Can I track my campaign's performance?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Yes! Your dashboard shows real-time statistics including listener count, geographic reach, and engagement metrics for all your active campaigns.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" aria-expanded="false">
+                                        <span>Is there a limit to how many campaigns I can create?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>There's no limit! You can create as many campaigns as needed. However, we recommend focusing on quality content that truly serves your community's needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Content -->
+                        <div class="help-section" id="feedback-section">
+                            <h3>Submit Feedback</h3>
+                            <p class="section-description">Help us improve Saarthi by sharing your thoughts, suggestions, or reporting issues.</p>
+                            <form class="feedback-form" id="feedback-form">
+                                <div class="form-group">
+                                    <label for="feedback-name">Your Name *</label>
+                                    <input type="text" id="feedback-name" name="name" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback-email">Email Address *</label>
+                                    <input type="email" id="feedback-email" name="email" required placeholder="your.email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback-type">Feedback Type</label>
+                                    <select id="feedback-type" name="type">
+                                        <option value="suggestion">Suggestion</option>
+                                        <option value="bug">Bug Report</option>
+                                        <option value="feature">Feature Request</option>
+                                        <option value="general">General Feedback</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback-message">Your Message *</label>
+                                    <textarea id="feedback-message" name="message" rows="5" required placeholder="Please share your feedback in detail..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit Feedback
+                                </button>
+                            </form>
+                            <div class="feedback-success" id="feedback-success" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Thank you for your feedback!</h4>
+                                <p>We've received your message and will get back to you within 24 hours.</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Content -->
+                        <div class="help-section" id="contact-section">
+                            <h3>Contact Saarthi Team</h3>
+                            <p class="section-description">Get in touch with our team for support, partnerships, or general inquiries.</p>
+                            <div class="contact-options">
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h4>Email Support</h4>
+                                        <p>Get help via email within 24 hours</p>
+                                        <a href="mailto:support@saarthi.org" class="contact-link">support@saarthi.org</a>
+                                    </div>
+                                </div>
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h4>Live Chat</h4>
+                                        <p>Chat with our support team</p>
+                                        <button class="contact-link btn-link" onclick="showNotification('Live chat feature coming soon!', 'info')">Start Chat</button>
+                                    </div>
+                                </div>
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h4>Social Media</h4>
+                                        <p>Follow us for updates and news</p>
+                                        <a href="#" class="contact-link" onclick="showNotification('Social media links coming soon!', 'info')">@SaarthiIndia</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Guide Content -->
+                        <div class="help-section" id="guide-section">
+                            <h3>User Guide</h3>
+                            <div class="guide-content">
+                                <div class="guide-intro">
+                                    <p>Welcome to Saarthi! This comprehensive guide will help you navigate the platform and create impactful voice campaigns for social change.</p>
+                                </div>
+
+                                <div class="guide-steps">
+                                    <div class="guide-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h4>Getting Started</h4>
+                                            <p>After signing in through our secure authentication system, you'll land on your personalized dashboard. Here you can see your campaign statistics, recent activity, and quick action buttons to get started immediately.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="guide-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h4>Creating Your First Campaign</h4>
+                                            <p>Click "Start a Campaign" from the sidebar or dashboard. Fill in your campaign details including a compelling title, description, target location, and relevant topic tags. Choose your distribution method (WhatsApp, loudspeakers, schools) based on your audience.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="guide-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h4>Adding Voice Content</h4>
+                                            <p>Upload your voice message in MP3 or WAV format (max 10MB). Ensure clear audio quality for maximum impact. Alternatively, use our upcoming Murf AI integration to generate professional voice content from your text.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="guide-step">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h4>Review and Launch</h4>
+                                            <p>Preview your campaign before submission. Our team reviews all campaigns within 24 hours to ensure quality and appropriateness. Once approved, your campaign goes live and starts reaching your target audience.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="guide-step">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">
+                                            <h4>Tracking Impact</h4>
+                                            <p>Monitor your campaign's performance through real-time analytics on your dashboard. Track listener counts, geographic reach, and engagement metrics. Use these insights to optimize future campaigns and maximize your social impact.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="guide-tips">
+                                    <h4>Pro Tips for Success</h4>
+                                    <ul>
+                                        <li>Keep your message clear, concise, and action-oriented</li>
+                                        <li>Use local language and cultural references for better connection</li>
+                                        <li>Include a clear call-to-action in your voice message</li>
+                                        <li>Collaborate with local community leaders for wider reach</li>
+                                        <li>Regular follow-up campaigns help maintain momentum</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Murf AI Content -->
+                        <div class="help-section" id="murf-section">
+                            <div class="murf-placeholder">
+                                <i class="fas fa-robot murf-icon"></i>
+                                <h3>Ask with Murf AI</h3>
+                                <p>Get instant answers to your questions using our AI-powered assistant.</p>
+                                <div class="coming-soon-badge">Coming Soon</div>
+                                <p class="murf-description">This feature will allow you to ask questions in natural language and get personalized help with campaign creation, platform navigation, and best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Analytics - Saarthi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="analytics.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">SAARTHI</div>
+        <div class="mobile-user">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-bullhorn"></i>
+                <span class="logo-text">SAARTHI</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link active" data-page="my-campaigns">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="nav-text">My Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="start-campaign.html" class="nav-link" data-page="start-campaign">
+                        <i class="fas fa-plus-circle"></i>
+                        <span class="nav-text">Start a Campaign</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="campaigns.html" class="nav-link" data-page="explore-campaigns">
+                        <i class="fas fa-search"></i>
+                        <span class="nav-text">Explore Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="inbox">
+                        <i class="fas fa-inbox"></i>
+                        <span class="nav-text">Inbox / Feedback</span>
+                        <span class="notification-badge">3</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link sign-out" id="sign-out">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>My Campaigns</span>
+                </div>
+                <h1 class="page-title">Campaign Analytics</h1>
+                <p class="page-subtitle">Track your impact and optimize your campaigns for maximum reach</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="export-data">
+                    <i class="fas fa-download"></i>
+                    Export Data
+                </button>
+                <button class="btn btn-primary" id="create-campaign">
+                    <i class="fas fa-plus"></i>
+                    New Campaign
+                </button>
+            </div>
+        </section>
+
+        <!-- Overview Stats -->
+        <section class="overview-stats">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="12">0</h3>
+                        <p class="stat-label">Total Campaigns</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +3 this month
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="8">0</h3>
+                        <p class="stat-label">States Covered</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +2 new states
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="15420">0</h3>
+                        <p class="stat-label">Total Listeners</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +2.3K this week
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="3">0</h3>
+                        <p class="stat-label">Pending Review</p>
+                        <span class="stat-change neutral">
+                            <i class="fas fa-minus"></i>
+                            No change
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Dashboard -->
+        <div class="analytics-grid">
+            <!-- Campaign Topics Chart -->
+            <section class="analytics-card">
+                <div class="card-header">
+                    <h3 class="card-title">Campaigns by Topic</h3>
+                    <div class="card-actions">
+                        <button class="btn-icon" title="Refresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="topicsChart"></canvas>
+                </div>
+                <div class="chart-legend" id="topicsLegend"></div>
+            </section>
+
+            <!-- Campaign Timeline -->
+            <section class="analytics-card">
+                <div class="card-header">
+                    <h3 class="card-title">Campaign Creation Timeline</h3>
+                    <div class="time-filter">
+                        <button class="time-btn active" data-period="6m">6M</button>
+                        <button class="time-btn" data-period="1y">1Y</button>
+                        <button class="time-btn" data-period="all">All</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+            </section>
+
+            <!-- State-wise Distribution -->
+            <section class="analytics-card">
+                <div class="card-header">
+                    <h3 class="card-title">State-wise Campaign Distribution</h3>
+                    <div class="card-actions">
+                        <button class="btn-icon" title="View Map">
+                            <i class="fas fa-map"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statesChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Recent Campaigns -->
+            <section class="analytics-card recent-campaigns">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Campaign Activity</h3>
+                    <a href="#" class="view-all-link">View All</a>
+                </div>
+                <div class="campaigns-list" id="recentCampaigns">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="analytics-card">
+                <div class="card-header">
+                    <h3 class="card-title">Listener Engagement</h3>
+                    <div class="metric-period">
+                        <select id="engagementPeriod">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </section>
+
+            <!-- AI Insights Placeholder -->
+            <section class="analytics-card ai-insights">
+                <div class="card-header">
+                    <h3 class="card-title">AI-Powered Insights</h3>
+                    <div class="coming-soon-badge">Coming Soon</div>
+                </div>
+                <div class="ai-content">
+                    <div class="ai-placeholder">
+                        <i class="fas fa-robot ai-icon"></i>
+                        <h4>Murf AI Analytics</h4>
+                        <p>Get intelligent insights about your campaign performance, audience engagement, and optimization recommendations.</p>
+                        <button class="btn btn-primary" disabled>
+                            <i class="fas fa-magic"></i>
+                            Generate AI Insights
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script>
+        // Debug Chart.js loading
+        window.addEventListener('load', function() {
+            console.log('Window loaded');
+            if (typeof Chart !== 'undefined') {
+                console.log('Chart.js loaded successfully');
+            } else {
+                console.error('Chart.js failed to load');
+            }
+        });
+    </script>
+    <script src="dashboard.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

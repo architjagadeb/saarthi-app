@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Campaign - Saarthi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Anton:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="start-campaign.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">SAARTHI</div>
+        <div class="mobile-user">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-bullhorn"></i>
+                <span class="logo-text">SAARTHI</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link" data-page="my-campaigns">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="nav-text">My Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="start-campaign.html" class="nav-link active" data-page="start-campaign">
+                        <i class="fas fa-plus-circle"></i>
+                        <span class="nav-text">Start a Campaign</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="campaigns.html" class="nav-link" data-page="explore-campaigns">
+                        <i class="fas fa-search"></i>
+                        <span class="nav-text">Explore Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="inbox">
+                        <i class="fas fa-inbox"></i>
+                        <span class="nav-text">Inbox / Feedback</span>
+                        <span class="notification-badge">3</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link sign-out" id="sign-out">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-container main-content" id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <h1 class="page-title">Start Your Campaign</h1>
+                <p class="page-subtitle">Empower communities with your voice</p>
+            </div>
+        </section>
+
+        <!-- Campaign Form -->
+        <section class="form-section">
+            <div class="form-container">
+                <form id="campaign-form" class="campaign-form" novalidate>
+                    <!-- Basic Information -->
+                    <div class="form-group">
+                        <label for="title" class="form-label">Campaign Title *</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="campaignTitle"
+                            class="form-input"
+                            placeholder="Enter a compelling title for your campaign"
+                            required
+                            aria-describedby="title-help"
+                        >
+                        <small id="title-help" class="form-help">Choose a clear, impactful title that describes your cause</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="short-description" class="form-label">Short Description *</label>
+                        <textarea 
+                            id="short-description" 
+                            name="shortDescription" 
+                            class="form-textarea" 
+                            rows="3"
+                            placeholder="Brief summary of your campaign (max 200 characters)"
+                            maxlength="200"
+                            required
+                            aria-describedby="short-desc-help"
+                        ></textarea>
+                        <small id="short-desc-help" class="form-help">This will appear in campaign previews</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label">Full Description *</label>
+                        <textarea
+                            id="description"
+                            name="fullDescription"
+                            class="form-textarea"
+                            rows="8"
+                            placeholder="Detailed description of your campaign, its goals, and expected impact (minimum 500 characters)"
+                            minlength="500"
+                            required
+                            aria-describedby="full-desc-help"
+                        ></textarea>
+                        <small id="full-desc-help" class="form-help">Provide comprehensive details about your campaign</small>
+                    </div>
+
+                    <!-- Location and Topics -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location" class="form-label">Location/State *</label>
+                            <select id="location" name="locationState" class="form-select" required>
+                                <option value="">Select a state</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="topic" class="form-label">Primary Topic *</label>
+                            <select id="topic" name="primaryTopic" class="form-select" required>
+                                <option value="">Select Topic</option>
+                                <option value="Sanitation">Sanitation</option>
+                                <option value="Education">Education</option>
+                                <option value="Water">Water</option>
+                                <option value="Menstrual Health">Menstrual Health</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Environment">Environment</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Topic Tags -->
+                    <div class="form-group">
+                        <label class="form-label">Topic Tags *</label>
+                        <div class="checkbox-grid" role="group" aria-labelledby="topic-tags-label">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tag-sanitation" name="topicTags" value="Sanitation">
+                                <label for="tag-sanitation" class="checkbox-label">Sanitation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tag-education" name="topicTags" value="Education">
+                                <label for="tag-education" class="checkbox-label">Education</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tag-water" name="topicTags" value="Water">
+                                <label for="tag-water" class="checkbox-label">Water</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tag-menstrual" name="topicTags" value="Menstrual Health">
+                                <label for="tag-menstrual" class="checkbox-label">Menstrual Health</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tag-custom" name="topicTags" value="Custom">
+                                <label for="tag-custom" class="checkbox-label">Custom</label>
+                            </div>
+                        </div>
+                        <div class="form-group custom-topic" id="custom-topic-group" style="display: none;">
+                            <input 
+                                type="text" 
+                                id="custom-topic" 
+                                name="customTopic" 
+                                class="form-input" 
+                                placeholder="Enter your custom topic"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Media Upload -->
+                    <div class="form-group">
+                        <label for="cover-image" class="form-label">Campaign Cover Image</label>
+                        <div class="file-upload-area">
+                            <input 
+                                type="file" 
+                                id="cover-image" 
+                                name="coverImage" 
+                                class="file-input" 
+                                accept=".jpg,.jpeg,.png,.webp"
+                                aria-describedby="image-help"
+                            >
+                            <div class="file-upload-content">
+                                <div class="upload-icon">📷</div>
+                                <p class="upload-text">Click to upload or drag and drop</p>
+                                <p class="upload-formats">JPG, PNG, WEBP (max 5MB)</p>
+                            </div>
+                        </div>
+                        <small id="image-help" class="form-help">Upload a compelling image that represents your campaign</small>
+                    </div>
+
+                    <!-- Distribution Method -->
+                    <div class="form-group">
+                        <label class="form-label">Distribution Method *</label>
+                        <div class="checkbox-grid" role="group" aria-labelledby="distribution-label">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dist-whatsapp" name="distributionMethod" value="WhatsApp">
+                                <label for="dist-whatsapp" class="checkbox-label">WhatsApp</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dist-loudspeakers" name="distributionMethod" value="Loudspeakers">
+                                <label for="dist-loudspeakers" class="checkbox-label">Loudspeakers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dist-schools" name="distributionMethod" value="Schools">
+                                <label for="dist-schools" class="checkbox-label">Schools</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dist-other" name="distributionMethod" value="Other">
+                                <label for="dist-other" class="checkbox-label">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Voice Message Text for Murf AI -->
+                    <div class="form-group">
+                        <label for="voice-text" class="form-label">Voice Message Script *</label>
+                        <div class="voice-text-section">
+                            <textarea
+                                id="voice-text"
+                                name="voiceText"
+                                class="form-textarea voice-textarea"
+                                rows="6"
+                                placeholder="Write your voice message script here. This text will be converted to audio using Murf AI. Keep it clear, engaging, and under 500 words for best results."
+                                maxlength="2000"
+                                required
+                                aria-describedby="voice-text-help"
+                            ></textarea>
+                            <div class="voice-controls">
+                                <div class="voice-selection">
+                                    <div class="voice-option">
+                                        <label for="voice-gender" class="voice-label">Voice Gender:</label>
+                                        <select id="voice-gender" name="voiceGender" class="voice-select">
+                                            <option value="">Select Gender</option>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                        </select>
+                                    </div>
+                                    <div class="voice-option">
+                                        <label for="voice-type" class="voice-label">Language:</label>
+                                        <select id="voice-type" name="voiceType" class="voice-select">
+                                            <option value="">Select Language</option>
+                                            <option value="english">English</option>
+                                            <option value="hindi">Hindi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="murf-ai-section">
+                                    <button type="button" class="murf-ai-btn" id="generate-voice-btn">
+                                        <span class="ai-icon">🤖</span>
+                                        Generate Voice with Murf AI
+                                    </button>
+                                    <div id="voice-status" class="voice-status"></div>
+                                    <audio controls class="audio-player" id="voice-preview" style="display: none;">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <small id="voice-text-help" class="form-help">Write a clear, engaging script for your voice message. It will be converted to audio using Murf AI technology.</small>
+                    </div>
+
+                    <!-- Creator Information -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="creator-name" class="form-label">Your Name *</label>
+                            <input 
+                                type="text" 
+                                id="creator-name" 
+                                name="creatorName" 
+                                class="form-input" 
+                                placeholder="Enter your full name"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="creator-email" class="form-label">Email Address *</label>
+                            <input 
+                                type="email" 
+                                id="creator-email" 
+                                name="creatorEmail" 
+                                class="form-input" 
+                                placeholder="your.email@example.com"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="form-group">
+                        <div class="checkbox-item consent-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent" class="checkbox-label">
+                                I confirm that all information provided is accurate and I have the right to use any uploaded content *
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="preview-btn">
+                            Preview Campaign
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            Submit Campaign
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="dashboard.js"></script>
+    <script src="start-campaign.js"></script>
+
+</body>
+</html>

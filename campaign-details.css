@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f0f0;
+    color: #000;
+    margin: 20px;
+}
+
+.manifesto-grid {
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.grid-item {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #000;
+    break-inside: avoid;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    display: block;
+    border: none;
+    padding: 0;
+}
+
+.item-title {
+    text-align: center;
+    border: none;
+}
+
+.item-image {
+    max-height: 500px; /* Control image height */
+}
+
+.item-metadata {
+    padding: 20px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-top: 2px solid #000;
+    text-align: center;
+}
+
+.item-main-content {
+    padding: 20px 0;
+    line-height: 1.7;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.manifesto-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.manifesto-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.item-main-content h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.item-main-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.inline-image-container {
+    margin: 30px 0;
+    border: 2px solid #000;
+    padding: 8px;
+    background: #fff;
+}
+
+.inline-image-container img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%);
+}
+
+.item-metadata strong {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+}
+
+.metadata-item {
+    margin-bottom: 20px;
+}
+.metadata-item:last-child {
+    margin-bottom: 0;
+} 
+
+@media (max-width: 1024px) {
+    .manifesto-grid {
+        column-count: 2;
+    }
+}
+@media (max-width: 768px) {
+    .manifesto-grid {
+        column-count: 1;
+    }
+} 

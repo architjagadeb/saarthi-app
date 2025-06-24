@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Campaigns - Saarthi</title>
+    <link rel="stylesheet" href="campaigns.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">SAARTHI</div>
+        <div class="mobile-user">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-bullhorn"></i>
+                <span class="logo-text">SAARTHI</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link" data-page="my-campaigns">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="nav-text">My Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="start-campaign.html" class="nav-link" data-page="start-campaign">
+                        <i class="fas fa-plus-circle"></i>
+                        <span class="nav-text">Start a Campaign</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="campaigns.html" class="nav-link active" data-page="explore-campaigns">
+                        <i class="fas fa-search"></i>
+                        <span class="nav-text">Explore Campaigns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="inbox">
+                        <i class="fas fa-inbox"></i>
+                        <span class="nav-text">Inbox / Feedback</span>
+                        <span class="notification-badge">3</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link sign-out" id="sign-out">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="container main-content" id="main-content">
+        <section class="filter-section">
+            <h1 class="page-title">Explore Campaigns</h1>
+            <div class="filters">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search by name, location, or topic...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="filter-controls">
+                    <div class="control-group">
+                        <label for="location-filter">Location:</label>
+                        <select id="location-filter">
+                            <option value="all">All</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                        </select>
+                    </div>
+                    <div class="control-group topic-filters">
+                        <label>Topic:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="topic-sanitation" name="topic" value="Sanitation">
+                            <label for="topic-sanitation">Sanitation</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="topic-menstrual" name="topic" value="Menstrual Health">
+                            <label for="topic-menstrual">Menstrual Health</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="topic-water" name="topic" value="Water">
+                            <label for="topic-water">Water</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="topic-education" name="topic" value="Education">
+                            <label for="topic-education">Education</label>
+                        </div>
+                    </div>
+                    <button id="clear-filters-btn">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="campaign-grid" class="campaign-grid">
+            <!-- Campaign cards will be injected here by JavaScript -->
+        </section>
+    </main>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="dashboard.js"></script>
+    <script src="campaigns.js"></script>
+</body>
+</html>
