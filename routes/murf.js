@@ -34,33 +34,24 @@ const voiceMap = {
 };
 
 router.post("/api/murf-generate", async (req, res) => {
-  const { script, gender, language, speed } = req.body;
-  const voiceKey = `${gender}_${language}`;
-  const voice = voiceMap[voiceKey];
-
-  if (!voice) {
-    return res.status(400).json({ error: "Unsupported voice configuration." });
+  const { text, voiceId } = req.body;
+  if (!text || !voiceId) {
+    return res.status(400).json({ error: "Missing text or voiceId." });
   }
-
   try {
     const response = await axios.post(
-      "https://api.murf.ai/speech/generate",
-      {
-        script,
-        voice_id: voice.voice_id,
-        style: voice.style,
-        speed: parseFloat(speed)
-      },
+      "https://api.murf.ai/v1/speech/generate",
+      { text, voiceId },
       {
         headers: {
-          Authorization: `Bearer ${MURF_API_KEY}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "api-key": process.env.MURF_API_KEY
         }
       }
     );
-
-    const audioUrl = response.data.audioUrl;
-    res.json({ audioUrl });
+    // The response contains a URL to the audio file
+    res.json({ audioUrl: response.data.audioFile });
   } catch (err) {
     console.error("Murf API Error:", err.response?.data || err.message);
     res.status(500).json({ error: "Voice generation failed." });

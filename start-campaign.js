@@ -499,81 +499,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return selectedVoice ? selectedVoice.voice_id : "en-US-natalie"; // Default fallback
     }
 
-    // WebSocket for Murf AI
-    let murfSocket = null;
-    let murfSocketReady = false;
-    let murfSocketAuthSent = false;
-    const MURF_API_KEY = "ap2_397f1024-c966-4e6a-b8ed-ed607d8bc59d"; // TODO: Replace with your real API key
-    let pendingSpeakRequest = null;
-
-    // Warn if not served over HTTPS
-    if (location.protocol !== 'https:') {
-        setTimeout(() => {
-            alert('⚠️ This page is not served over HTTPS. Secure WebSocket (wss://) connections will not work on file:// or http://. Please use Live Server or deploy to a secure host for full functionality.');
-        }, 500);
-    }
-
-    function isValidSpeakPayload(payload) {
-        if (!payload) return false;
-        if (!payload.voice_config) return false;
-        if (typeof payload.voice_config.voice_id !== 'string' || !payload.voice_config.voice_id.trim()) return false;
-        if (typeof payload.voice_config.text !== 'string' || !payload.voice_config.text.trim()) return false;
-        return true;
-    }
-
-    function initMurfSocket() {
-        murfSocket = new WebSocket("wss://api.murf.ai/v1/speech/stream-input");
-        murfSocketReady = false;
-        murfSocketAuthSent = false;
-
-        murfSocket.onopen = () => {
-            murfSocket.send(JSON.stringify({
-                type: "auth",
-                apiKey: MURF_API_KEY
-            }));
-            murfSocketAuthSent = true;
-        };
-        murfSocket.onerror = (err) => {
-            voiceStatus.textContent = "❌ WebSocket error. Try again.";
-            console.error("WebSocket error:", err);
-        };
-        murfSocket.onclose = () => {
-            voiceStatus.textContent = "ℹ️ WebSocket connection closed.";
-            murfSocketReady = false;
-        };
-        murfSocket.onmessage = async (event) => {
-            // Handle JSON (auth success) or audio Blob
-            if (typeof event.data === "string") {
-                try {
-                    const msg = JSON.parse(event.data);
-                    if (msg.type === "auth" && msg.success) {
-                        murfSocketReady = true;
-                        // Send pending speak request if any
-                        if (pendingSpeakRequest && isValidSpeakPayload(pendingSpeakRequest)) {
-                            murfSocket.send(JSON.stringify(pendingSpeakRequest));
-                            pendingSpeakRequest = null;
-                        }
-                    } else if (msg.error) {
-                        voiceStatus.textContent = "❌ " + msg.error;
-                    }
-                } catch (e) {
-                    // Not JSON, ignore
-                }
-            } else if (event.data instanceof Blob) {
-                // Streamed audio
-                const arrayBuffer = await event.data.arrayBuffer();
-                const context = new (window.AudioContext || window.webkitAudioContext)();
-                context.decodeAudioData(arrayBuffer, (buffer) => {
-                    const source = context.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(context.destination);
-                    source.start();
-                });
-                voiceStatus.textContent = `✅ Voice generated successfully!`;
-            }
-        };
-    }
-
     generateVoiceBtn.addEventListener("click", async () => {
         const text = voiceInput.value.trim();
         const gender = voiceGender.value;
@@ -594,24 +519,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
         voiceStatus.textContent = "⏳ Generating voice, please wait...";
 
-        const speakRequest = {
-            voice_config: {
-                voice_id: selectedVoiceId,
-                text: text
+        try {
+            const response = await fetch("/api/murf-generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    text: text,
+                    voiceId: selectedVoiceId
+                })
+            });
+            const data = await response.json();
+            if (data.audioUrl) {
+                voicePreview.src = data.audioUrl;
+                voicePreview.style.display = "block";
+                voiceStatus.textContent = `✅ Voice generated successfully! (${selectedVoiceId})`;
+                voicePreview.play().catch(err => {
+                    voiceStatus.textContent += " Click play to listen.";
+                });
+            } else {
+                voiceStatus.textContent = data.error || "❌ Failed to generate voice. Try again.";
             }
-        };
-
-        if (!isValidSpeakPayload(speakRequest)) {
-            voiceStatus.textContent = "❌ Internal error: Invalid payload. Please check your input.";
-            return;
-        }
-
-        // If socket is not ready, (re)initialize and store the request
-        if (!murfSocket || murfSocket.readyState !== 1 || !murfSocketReady) {
-            pendingSpeakRequest = speakRequest;
-            initMurfSocket();
-        } else {
-            murfSocket.send(JSON.stringify(speakRequest));
+        } catch (err) {
+            voiceStatus.textContent = "❌ Network error. Try again.";
         }
     });
 
