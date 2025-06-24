@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Murf AI TTS direct API integration with voice selection
+    // Murf AI TTS integration with voice selection (REST API)
     const generateVoiceBtn = document.getElementById("generate-voice-btn");
     const voiceInput = document.getElementById("voice-text");
     const voiceStatus = document.getElementById("voice-status");
@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const voiceGender = document.getElementById("voice-gender");
     const voiceType = document.getElementById("voice-type");
 
-    // Voice mapping based on your provided voice IDs
+    // Voice mapping based on provided voice IDs
     const voiceMap = {
         "female_hindi": { voice_id: "hi-IN-shweta", style: "Conversational" },
         "male_hindi": { voice_id: "hi-IN-rahul", style: "General" },
@@ -492,11 +492,10 @@ document.addEventListener('DOMContentLoaded', function() {
         "male_english": { voice_id: "en-US-ken", style: "Conversational" }
     };
 
-    // Function to get voice ID based on gender and language selection
     function getVoiceId(gender, type) {
         const voiceKey = `${gender}_${type}`;
         const selectedVoice = voiceMap[voiceKey];
-        return selectedVoice ? selectedVoice.voice_id : "en-US-natalie"; // Default fallback
+        return selectedVoice ? selectedVoice.voice_id : "en-US-natalie";
     }
 
     generateVoiceBtn.addEventListener("click", async () => {
@@ -514,9 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Get selected voice configuration
         const selectedVoiceId = getVoiceId(gender, type);
-
         voiceStatus.textContent = "⏳ Generating voice, please wait...";
 
         try {
@@ -535,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 voicePreview.src = data.audioUrl;
                 voicePreview.style.display = "block";
                 voiceStatus.textContent = `✅ Voice generated successfully! (${selectedVoiceId})`;
-                voicePreview.play().catch(err => {
+                voicePreview.play().catch(() => {
                     voiceStatus.textContent += " Click play to listen.";
                 });
             } else {
